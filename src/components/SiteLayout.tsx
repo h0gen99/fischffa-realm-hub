@@ -1,6 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Fish, Github, MessageCircle } from "lucide-react";
+import { Menu, X, Fish, MessageCircle } from "lucide-react";
+
+const DISCORD_URL = "https://discord.gg/y32bEyVE";
 
 const navItems: { to: "/" | "/gamemodes" | "/beitreten" | "/ueber-uns"; label: string; exact?: boolean }[] = [
   { to: "/", label: "Start", exact: true },
@@ -56,6 +58,15 @@ export function SiteLayout() {
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-border glass px-3 py-2 text-sm font-medium hover:bg-secondary/70 transition-colors"
+              aria-label="Discord"
+            >
+              <MessageCircle className="h-4 w-4 text-accent" /> Discord
+            </a>
             <Link
               to="/beitreten"
               className="btn-primary inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold"
@@ -88,9 +99,18 @@ export function SiteLayout() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-2.5 text-sm font-semibold hover:bg-secondary transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              <MessageCircle className="h-4 w-4 text-accent" /> Discord
+            </a>
             <Link
               to="/beitreten"
-              className="btn-primary mt-2 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
               onClick={() => setOpen(false)}
             >
               Jetzt spielen
@@ -134,13 +154,15 @@ export function SiteLayout() {
             <p className="mt-3 text-sm text-muted-foreground">
               Server-IP: <span className="font-mono text-foreground">cytooxien.de</span>
             </p>
-            <div className="mt-4 flex gap-2">
-              <span className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-xs text-muted-foreground">
-                <MessageCircle className="h-3.5 w-3.5" /> Discord bald
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-xs text-muted-foreground">
-                <Github className="h-3.5 w-3.5" /> Open
-              </span>
+            <div className="mt-4 flex gap-2 flex-wrap">
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-xs hover:bg-secondary transition-colors"
+              >
+                <MessageCircle className="h-3.5 w-3.5 text-accent" /> Discord beitreten
+              </a>
             </div>
           </div>
         </div>

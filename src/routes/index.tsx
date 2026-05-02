@@ -9,12 +9,13 @@ import {
   Heart,
   Gamepad2,
   Flame,
-  Star,
-  Quote,
+  MessageCircle,
 } from "lucide-react";
 import { gamemodes } from "@/lib/gamemodes";
 import { GamemodeCard } from "@/components/GamemodeCard";
 import heroImg from "@/assets/hero.jpg";
+
+const DISCORD_URL = "https://discord.gg/y32bEyVE";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,24 +65,6 @@ const stats = [
   { value: "DE", label: "Auf Deutsch" },
 ];
 
-const testimonials = [
-  {
-    name: "Leon",
-    role: "Stammspieler",
-    text: "Die Mischung aus KnockbackFFA und Speedbridge ist genau mein Ding. Ich komm jeden Abend kurz vorbei.",
-  },
-  {
-    name: "Mia",
-    role: "Casual",
-    text: "Endlich ein Realm, auf dem man auch chillen kann. OnlyUp mit Freunden ist einfach mega.",
-  },
-  {
-    name: "Tobi",
-    role: "PvPler",
-    text: "Saubere Hits, faire Kämpfe, gute Leute. Viel mehr brauch ich von einem Server nicht.",
-  },
-];
-
 function Home() {
   return (
     <>
@@ -126,6 +109,14 @@ function Home() {
             >
               Jetzt spielen <ArrowRight className="h-4 w-4" />
             </Link>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" /> Discord beitreten
+            </a>
             <Link
               to="/gamemodes"
               className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
@@ -207,40 +198,45 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* DISCORD COMMUNITY */}
       <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent">Stimmen aus der Community</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold">
-            Was unsere <span className="text-gradient">Spieler sagen</span>
-          </h2>
-        </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
-            <figure
-              key={t.name}
-              className="card-hover glass rounded-2xl border border-border p-6 relative"
-            >
-              <Quote className="absolute top-4 right-4 h-8 w-8 text-accent/20" />
-              <div className="flex gap-0.5 text-accent">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
+        <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-14">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+          <div className="relative grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-accent">Community</p>
+              <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold">
+                Triff uns auf <span className="text-gradient">Discord</span>
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">
+                News, Events, Updates und Leute zum Zocken – alles auf einem Fleck.
+                Komm in den Discord, sag Hi und sei direkt dabei, wenn das nächste
+                100€-OnlyUp-Event startet.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href={DISCORD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold"
+                >
+                  <MessageCircle className="h-4 w-4" /> Zum Discord
+                </a>
+                <Link
+                  to="/gamemodes"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border glass px-6 py-3 font-semibold hover:bg-secondary/70 transition-colors"
+                >
+                  <Gamepad2 className="h-4 w-4" /> Modi ansehen
+                </Link>
               </div>
-              <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                „{t.text}"
-              </blockquote>
-              <figcaption className="mt-5 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-accent grid place-items-center font-bold text-sm text-primary-foreground">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
+            </div>
+            <div className="hidden md:flex justify-center">
+              <div className="relative h-48 w-48 rounded-3xl bg-gradient-to-br from-primary via-accent to-emerald grid place-items-center shadow-glow animate-float">
+                <MessageCircle className="h-20 w-20 text-primary-foreground" strokeWidth={1.5} />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
