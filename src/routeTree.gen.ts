@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as GamemodesRouteImport } from './routes/gamemodes'
+import { Route as BeitretenRouteImport } from './routes/beitreten'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UeberUnsRoute = UeberUnsRouteImport.update({
+  id: '/ueber-uns',
+  path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamemodesRoute = GamemodesRouteImport.update({
+  id: '/gamemodes',
+  path: '/gamemodes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeitretenRoute = BeitretenRouteImport.update({
+  id: '/beitreten',
+  path: '/beitreten',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/beitreten': typeof BeitretenRoute
+  '/gamemodes': typeof GamemodesRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beitreten': typeof BeitretenRoute
+  '/gamemodes': typeof GamemodesRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/beitreten': typeof BeitretenRoute
+  '/gamemodes': typeof GamemodesRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
+  id: '__root__' | '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeitretenRoute: typeof BeitretenRoute
+  GamemodesRoute: typeof GamemodesRoute
+  UeberUnsRoute: typeof UeberUnsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ueber-uns': {
+      id: '/ueber-uns'
+      path: '/ueber-uns'
+      fullPath: '/ueber-uns'
+      preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gamemodes': {
+      id: '/gamemodes'
+      path: '/gamemodes'
+      fullPath: '/gamemodes'
+      preLoaderRoute: typeof GamemodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beitreten': {
+      id: '/beitreten'
+      path: '/beitreten'
+      fullPath: '/beitreten'
+      preLoaderRoute: typeof BeitretenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeitretenRoute: BeitretenRoute,
+  GamemodesRoute: GamemodesRoute,
+  UeberUnsRoute: UeberUnsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

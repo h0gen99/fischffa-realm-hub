@@ -2,12 +2,12 @@ import { Link, Outlet } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Gamepad2 } from "lucide-react";
 
-const navItems = [
+const navItems: { to: "/" | "/gamemodes" | "/beitreten" | "/ueber-uns"; label: string; exact?: boolean }[] = [
   { to: "/", label: "Startseite", exact: true },
   { to: "/gamemodes", label: "Gamemodes" },
   { to: "/beitreten", label: "Beitreten" },
   { to: "/ueber-uns", label: "Über uns" },
-] as const;
+];
 
 export function SiteLayout() {
   const [open, setOpen] = useState(false);
