@@ -23,9 +23,9 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "knockbackffa",
     name: "KnockbackFFA",
-    short: "Schubse deine Gegner von der Map.",
+    short: "Schubs alle von der Map.",
     description:
-      "Spieler kämpfen mit Knockback-Kits und versuchen, andere von der Map zu schubsen. Schnell, chaotisch, suchtig.",
+      "Schnapp dir ein Knockback-Kit, spring in die Arena und schubs deine Gegner runter. Schnell, chaotisch und richtig suchtig.",
     icon: Swords,
     accent: "primary",
     highlights: ["Knockback-Kits", "Offene Arena", "Hohes Tempo"],
@@ -33,9 +33,9 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "joinffa",
     name: "JoinFFA",
-    short: "Klassisches FFA mit Kits.",
+    short: "Klassisches FFA mit Style.",
     description:
-      "Klassisches FFA mit verschiedenen Kits – kämpfe gegen alle anderen Spieler in einer offenen Arena.",
+      "Wähl dein Kit, geh rein und kämpf gegen alle. Pures PvP, bei dem nur dein Skill zählt – kein Schnickschnack.",
     icon: Crosshair,
     accent: "accent",
     highlights: ["Mehrere Kits", "PvP pur", "Skill-basiert"],
@@ -43,9 +43,9 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "speedbridge",
     name: "Speedbridge",
-    short: "Trainiere dein Bridging.",
+    short: "Werde der schnellste Bridger.",
     description:
-      "Trainiere deine Bridging-Skills und werde schneller und präziser. Perfekt zum Aufwärmen oder Üben.",
+      "Trainiere dein Bridging und jag deine Bestzeit. Perfekt zum Aufwärmen oder um dich richtig zu verbessern.",
     icon: Zap,
     accent: "emerald",
     highlights: ["Bridge-Training", "Bestzeiten", "Präzision"],
@@ -53,9 +53,9 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "speedrun",
     name: "Speedrun",
-    short: "Movement & Geschwindigkeit.",
+    short: "Movement & volle Geschwindigkeit.",
     description:
-      "Fokus auf Movement und Geschwindigkeit als Erweiterung zu Speedbridge. Optimiere jede Bewegung.",
+      "Die Erweiterung zu Speedbridge: hier zählt jede Bewegung. Optimiere deinen Lauf und werde wirklich schnell.",
     icon: Wind,
     accent: "accent",
     highlights: ["Movement", "Parkour", "Erweiterung zu Speedbridge"],
@@ -63,9 +63,9 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "tnt-tag",
     name: "TNT Tag",
-    short: "Heiße Kartoffel mit Sprengstoff.",
+    short: "Heiße Kartoffel, nur mit TNT.",
     description:
-      "Ein Spieler hat TNT – wie heiße Kartoffel. Gib es weiter, bevor es explodiert!",
+      "Einer hat das TNT – und das tickt. Gib es schnell weiter, sonst macht es Bumm. Spaß für die ganze Runde.",
     icon: Bomb,
     accent: "primary",
     highlights: ["Party-Modus", "Schnelle Runden", "Spaß garantiert"],
@@ -73,27 +73,27 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "onlyup",
     name: "OnlyUp",
-    short: "Das größte Cytooxien OnlyUp.",
+    short: "Klettere bis ganz nach oben.",
     description:
-      "Das größte Cytooxien-Realm OnlyUp! Mit geplantem 100€-Event und vielen Streamern.",
+      "Das größte OnlyUp auf den Cytooxien Realms. Streamer sind regelmäßig dabei und ein 100€-Event ist geplant.",
     icon: ArrowUp,
     accent: "emerald",
-    highlights: ["100€ Event geplant", "Streamer dabei", "Klettern bis ganz nach oben"],
+    highlights: ["100€ Event geplant", "Streamer dabei", "Größtes OnlyUp"],
   },
   {
     slug: "lobby-spiele",
     name: "Lobby Spiele",
-    short: "Kleine Minispiele zum Warmwerden.",
+    short: "Kleine Spiele zum Warmwerden.",
     description:
-      "Kleine Minispiele wie Combo Trainer, TicTacToe vs AI und weitere Fun-Games direkt aus der Lobby.",
+      "Combo Trainer, TicTacToe gegen die KI und mehr – direkt aus der Lobby für zwischendurch oder zum Aufwärmen.",
     icon: Gamepad2,
     accent: "accent",
-    highlights: ["Combo Trainer", "TicTacToe vs AI", "Weitere Fun-Games"],
+    highlights: ["Combo Trainer", "TicTacToe vs KI", "Mehr Fun-Games"],
   },
 ];
 
 export const accentClasses: Record<Gamemode["accent"], string> = {
-  primary: "from-primary/30 to-primary/5 text-primary",
-  accent: "from-accent/30 to-accent/5 text-accent",
-  emerald: "from-emerald/30 to-emerald/5 text-emerald",
+  primary: "from-primary/40 to-primary/5 text-primary",
+  accent: "from-accent/40 to-accent/5 text-accent",
+  emerald: "from-emerald/40 to-emerald/5 text-emerald",
 };
