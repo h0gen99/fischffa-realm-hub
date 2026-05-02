@@ -65,24 +65,6 @@ const stats = [
   { value: "DE", label: "Auf Deutsch" },
 ];
 
-const testimonials = [
-  {
-    name: "Leon",
-    role: "Stammspieler",
-    text: "Die Mischung aus KnockbackFFA und Speedbridge ist genau mein Ding. Ich komm jeden Abend kurz vorbei.",
-  },
-  {
-    name: "Mia",
-    role: "Casual",
-    text: "Endlich ein Realm, auf dem man auch chillen kann. OnlyUp mit Freunden ist einfach mega.",
-  },
-  {
-    name: "Tobi",
-    role: "PvPler",
-    text: "Saubere Hits, faire Kämpfe, gute Leute. Viel mehr brauch ich von einem Server nicht.",
-  },
-];
-
 function Home() {
   return (
     <>
@@ -127,6 +109,14 @@ function Home() {
             >
               Jetzt spielen <ArrowRight className="h-4 w-4" />
             </Link>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" /> Discord beitreten
+            </a>
             <Link
               to="/gamemodes"
               className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
