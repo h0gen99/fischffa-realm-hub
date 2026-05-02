@@ -99,9 +99,18 @@ export function SiteLayout() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-2.5 text-sm font-semibold hover:bg-secondary transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              <MessageCircle className="h-4 w-4 text-accent" /> Discord
+            </a>
             <Link
               to="/beitreten"
-              className="btn-primary mt-2 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
               onClick={() => setOpen(false)}
             >
               Jetzt spielen
