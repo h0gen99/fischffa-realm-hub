@@ -23,12 +23,12 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "knockbackffa",
     name: "KnockbackFFA",
-    short: "Schubs alle von der Map.",
+    short: "Eine Map, ein Kit, pure Action.",
     description:
-      "Schnapp dir ein Knockback-Kit, spring in die Arena und schubs deine Gegner runter. Schnell, chaotisch und richtig suchtig.",
+      "Eine einzige Map – schwebend hoch oben im Himmel – und ein Kit für alle. Kein Klassen-Wirrwarr, keine Map-Auswahl: einfach rein, schubsen, gewinnen. Wer zuerst fällt, fängt von vorne an.",
     icon: Swords,
     accent: "primary",
-    highlights: ["Knockback-Kits", "Offene Arena", "Hohes Tempo"],
+    highlights: ["1 Map im Himmel", "1 Kit für alle", "Reines Skill-PvP"],
   },
   {
     slug: "joinffa",
