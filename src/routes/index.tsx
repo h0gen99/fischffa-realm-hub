@@ -9,12 +9,13 @@ import {
   Heart,
   Gamepad2,
   Flame,
-  Star,
-  Quote,
+  MessageCircle,
 } from "lucide-react";
 import { gamemodes } from "@/lib/gamemodes";
 import { GamemodeCard } from "@/components/GamemodeCard";
 import heroImg from "@/assets/hero.jpg";
+
+const DISCORD_URL = "https://discord.gg/y32bEyVE";
 
 export const Route = createFileRoute("/")({
   head: () => ({
