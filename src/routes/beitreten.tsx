@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Monitor, Server, Compass, Fish, Play, Copy, Check, ArrowRight, HelpCircle } from "lucide-react";
 import { useState } from "react";
+import { TiltCard } from "@/components/TiltCard";
 
 export const Route = createFileRoute("/beitreten")({
   head: () => ({
@@ -92,30 +93,31 @@ function JoinPage() {
       <section className="max-w-4xl mx-auto px-4 pb-20">
         <ol className="space-y-4">
           {steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="card-hover glass flex gap-5 rounded-2xl border border-border p-5 sm:p-6"
-            >
-              <div className="flex flex-col items-center">
-                <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-accent grid place-items-center font-display text-base font-extrabold text-primary-foreground shadow-glow">
-                  {i + 1}
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="w-px flex-1 bg-gradient-to-b from-border to-transparent mt-2" />
-                )}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-3">
-                  <step.icon className="h-5 w-5 text-accent" />
-                  <h3 className="text-lg font-bold">{step.title}</h3>
-                </div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.text}</p>
-                {step.copy && (
-                  <div className="mt-3">
-                    <CopyChip value={step.copy} />
+            <li key={step.title}>
+              <TiltCard intensity={5}>
+                <div className="glass flex gap-5 rounded-2xl border border-border p-5 sm:p-6">
+                  <div className="flex flex-col items-center">
+                    <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-accent grid place-items-center font-display text-base font-extrabold text-primary-foreground shadow-glow">
+                      {i + 1}
+                    </div>
+                    {i < steps.length - 1 && (
+                      <div className="w-px flex-1 bg-gradient-to-b from-border to-transparent mt-2" />
+                    )}
                   </div>
-                )}
-              </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <step.icon className="h-5 w-5 text-accent" />
+                      <h3 className="text-lg font-bold">{step.title}</h3>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.text}</p>
+                    {step.copy && (
+                      <div className="mt-3">
+                        <CopyChip value={step.copy} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </TiltCard>
             </li>
           ))}
         </ol>

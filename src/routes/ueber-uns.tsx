@@ -1,32 +1,44 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, Users, Trophy, Sparkles, ArrowRight, Target, Smile, Shield } from "lucide-react";
+import { Crown, Code2, Hammer, Settings, MessageCircle, ArrowRight } from "lucide-react";
+import { TiltCard } from "@/components/TiltCard";
+import logo from "@/assets/logo.png";
+import type { LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/ueber-uns")({
   head: () => ({
     meta: [
-      { title: "Über uns – FischFFA" },
-      {
-        name: "description",
-        content:
-          "Wer wir sind und wofür FischFFA steht: Community, Spaß und Skill auf einem Cytooxien Realm.",
-      },
-      { property: "og:title", content: "Über uns – FischFFA" },
-      { property: "og:description", content: "Community, Spaß und Skill." },
+      { title: "Team – FischFFA" },
+      { name: "description", content: "Das Team hinter FischFFA." },
+      { property: "og:title", content: "Team – FischFFA" },
+      { property: "og:description", content: "Wer hinter FischFFA steckt." },
     ],
   }),
-  component: AboutPage,
+  component: TeamPage,
 });
 
-const values = [
-  { icon: Users, title: "Community first", text: "Freundliche Leute, klare Regeln und immer ein offenes Ohr für Feedback." },
-  { icon: Heart, title: "Einfach Spaß", text: "Sieben Modi auf einem Realm – langweilig wird hier garantiert nichts." },
-  { icon: Trophy, title: "Echtes Können", text: "Trainier dein Bridging, dein Movement und dein PvP – ganz ohne Pay-to-Win." },
-  { icon: Sparkles, title: "Events", text: "Wir machen regelmäßig Aktionen – z. B. unser geplantes 100€ OnlyUp-Event." },
-  { icon: Shield, title: "Fairplay", text: "Cheater haben hier nichts zu suchen. Wir gehen Meldungen direkt nach." },
-  { icon: Smile, title: "Auf Deutsch", text: "Alles komplett auf Deutsch – vom Server bis zur Community." },
+type Member = {
+  name: string;
+  role: string;
+  text: string;
+  icon: LucideIcon;
+  accent: "primary" | "accent" | "emerald";
+};
+
+const team: Member[] = [
+  { name: "Fischiix", role: "Owner", text: "Kümmert sich um alles.", icon: Crown, accent: "primary" },
+  { name: "Gritzelbritz", role: "Admin & Developer", text: "Denkt mit und codet.", icon: Code2, accent: "accent" },
+  { name: "Fite_88", role: "Admin & Builder", text: "Baut, denkt und organisiert.", icon: Hammer, accent: "emerald" },
+  { name: "Freeeedom", role: "Manager", text: "Organisiert alles.", icon: Settings, accent: "primary" },
+  { name: "Babobastisch", role: "Discord Manager", text: "Kümmert sich komplett um Discord.", icon: MessageCircle, accent: "accent" },
 ];
 
-export default function AboutPage() {
+const accentBg: Record<Member["accent"], string> = {
+  primary: "from-primary/40 to-primary/5 text-primary",
+  accent: "from-accent/40 to-accent/5 text-accent",
+  emerald: "from-emerald/40 to-emerald/5 text-emerald",
+};
+
+function TeamPage() {
   return (
     <>
       <section className="relative overflow-hidden">
@@ -34,84 +46,55 @@ export default function AboutPage() {
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[600px] rounded-full bg-emerald/15 blur-3xl -z-10" />
 
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent">Über uns</p>
+          <img src={logo} alt="FischFFA" width={120} height={120} className="mx-auto h-24 w-24 object-contain logo-glow float-logo" />
+          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-accent">Das Team</p>
           <h1 className="mt-3 font-display text-4xl sm:text-6xl font-black">
-            <span className="text-gradient">Unsere Story</span>
+            <span className="text-gradient">Wer hinter FischFFA steckt</span>
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            FischFFA ist aus einer ganz einfachen Idee entstanden: ein Realm, auf dem
-            man <span className="text-foreground font-semibold">alles spielen kann, was Spaß macht</span> – ohne ewig
-            zwischen verschiedenen Servern zu wechseln. PvP-Profi, Casual-Spieler oder
-            irgendwo dazwischen? Hier bist du richtig.
+          <p className="mt-5 text-lg text-muted-foreground">
+            Ein kleines Team, das Bock auf Minecraft hat.
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="max-w-5xl mx-auto px-4 pb-12">
-        <div className="grid md:grid-cols-2 gap-5">
-          <div className="card-hover glass rounded-2xl border border-border p-8">
-            <Target className="h-8 w-8 text-accent" />
-            <h2 className="mt-4 font-display text-2xl font-extrabold">Unsere Mission</h2>
-            <p className="mt-3 text-muted-foreground leading-relaxed">
-              Wir wollen einen Server bauen, auf dem man sich einfach wohlfühlt.
-              Klare Regeln, faires Spiel, viele Modi – und eine Community, in der
-              man sich nach ein paar Runden schon kennt.
-            </p>
-          </div>
-          <div className="card-hover glass rounded-2xl border border-border p-8">
-            <Heart className="h-8 w-8 text-accent" />
-            <h2 className="mt-4 font-display text-2xl font-extrabold">Unser Versprechen</h2>
-            <p className="mt-3 text-muted-foreground leading-relaxed">
-              Kein Pay-to-Win, keine Werbung an jeder Ecke, kein Drama. Wir machen
-              das, weil wir Bock auf Minecraft haben – und das soll man merken.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="text-center max-w-xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent">Wofür wir stehen</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold">Unsere Werte</h2>
-        </div>
-
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {values.map((v) => (
-            <div
-              key={v.title}
-              className="card-hover glass rounded-2xl border border-border p-6"
-            >
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary/30 via-accent/30 to-emerald/30 grid place-items-center">
-                <v.icon className="h-6 w-6 text-accent" />
-              </div>
-              <h3 className="mt-4 text-lg font-bold">{v.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{v.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
       <section className="max-w-6xl mx-auto px-4 pb-24">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/15 via-accent/10 to-emerald/15 p-10 sm:p-14 text-center">
-          <div className="absolute inset-0 grid-pattern" />
-          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
-          <div className="relative">
-            <h3 className="font-display text-2xl sm:text-4xl font-extrabold">
-              Werde Teil von <span className="text-gradient">FischFFA</span>
-            </h3>
-            <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-              Komm vorbei, lern die Leute kennen und finde deinen Lieblingsmodus. Wir freuen uns auf dich.
-            </p>
-            <Link
-              to="/beitreten"
-              className="btn-primary mt-7 inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold"
-            >
-              Jetzt beitreten <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {team.map((m, i) => {
+            const Icon = m.icon;
+            return (
+              <div key={m.name} className={`animate-fade-in-up delay-${Math.min((i + 1) * 100, 400)}`}>
+                <TiltCard className="h-full">
+                  <div className="ring-aurora group relative h-full overflow-hidden rounded-2xl border border-border bg-card/80 p-6 shadow-card glass">
+                    <div
+                      className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br opacity-40 blur-3xl transition-all duration-500 group-hover:opacity-80 ${accentBg[m.accent]}`}
+                    />
+                    <div className="relative flex items-center gap-4">
+                      <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br shadow-soft ${accentBg[m.accent]}`}>
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold tracking-tight">{m.name}</h3>
+                        <p className="text-sm text-accent/90 font-medium">{m.role}</p>
+                      </div>
+                    </div>
+                    <p className="relative mt-5 text-sm text-muted-foreground leading-relaxed">{m.text}</p>
+                  </div>
+                </TiltCard>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 relative overflow-hidden rounded-3xl border border-border glass p-10 text-center">
+          <h3 className="font-display text-2xl sm:text-3xl font-extrabold">
+            Werde Teil von <span className="text-gradient">FischFFA</span>
+          </h3>
+          <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+            Komm vorbei, lern die Leute kennen und finde deinen Lieblingsmodus.
+          </p>
+          <Link to="/beitreten" className="btn-primary mt-6 inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold">
+            Jetzt beitreten <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </>

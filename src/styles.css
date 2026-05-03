@@ -191,3 +191,70 @@
   0%, 100% { opacity: .6; }
   50% { opacity: 1; }
 }
+
+/* Ambient drifting orbs */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: .55;
+  will-change: transform;
+}
+.orb-1 {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, oklch(0.74 0.17 220 / .55), transparent 70%);
+  top: -120px; left: -120px;
+  animation: drift1 22s ease-in-out infinite;
+}
+.orb-2 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, oklch(0.80 0.16 180 / .45), transparent 70%);
+  bottom: -120px; right: -100px;
+  animation: drift2 26s ease-in-out infinite;
+}
+.orb-3 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, oklch(0.76 0.18 150 / .35), transparent 70%);
+  top: 40%; left: 40%;
+  animation: drift3 30s ease-in-out infinite;
+}
+@keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,-30px)} }
+@keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(30px,-50px) scale(1.1)} }
+
+/* Tilt card sheen */
+.tilt-card {
+  position: relative;
+}
+.tilt-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--accent) 18%, transparent), transparent 50%);
+  opacity: 0;
+  transition: opacity .3s ease;
+  mix-blend-mode: screen;
+}
+.tilt-card:hover::after { opacity: 1; }
+
+/* Floating logo */
+@keyframes float-logo {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-14px) rotate(1deg); }
+}
+.float-logo { animation: float-logo 6s ease-in-out infinite; }
+
+/* Page route transition */
+.page-enter { animation: page-in .55s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Glow ring around logo */
+.logo-glow {
+  filter: drop-shadow(0 0 40px color-mix(in oklab, var(--accent) 55%, transparent))
+          drop-shadow(0 0 80px color-mix(in oklab, var(--primary) 30%, transparent));
+}

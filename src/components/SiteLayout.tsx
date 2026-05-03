@@ -1,19 +1,22 @@
-import { Link, Outlet } from "@tanstack/react-router";
+import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Fish, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
+import logo from "@/assets/logo.png";
+import { AmbientBackground } from "@/components/AmbientBackground";
 
-const DISCORD_URL = "https://discord.gg/y32bEyVE";
+const DISCORD_URL = "https://discord.gg/9sRnGnaW";
 
 const navItems: { to: "/" | "/gamemodes" | "/beitreten" | "/ueber-uns"; label: string; exact?: boolean }[] = [
   { to: "/", label: "Start", exact: true },
   { to: "/gamemodes", label: "Gamemodes" },
   { to: "/beitreten", label: "Beitreten" },
-  { to: "/ueber-uns", label: "Über uns" },
+  { to: "/ueber-uns", label: "Team" },
 ];
 
 export function SiteLayout() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -23,7 +26,9 @@ export function SiteLayout() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <AmbientBackground />
+
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
@@ -33,12 +38,16 @@ export function SiteLayout() {
       >
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-primary via-accent to-emerald grid place-items-center shadow-glow group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <Fish className="h-5 w-5 text-primary-foreground" />
-            </div>
+            <img
+              src={logo}
+              alt="FischFFA Logo"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain logo-glow group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
+            />
             <div className="flex flex-col leading-none">
               <span className="font-display text-lg font-extrabold text-gradient">FischFFA</span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Cytooxien Realm</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Allrounder Realm</span>
             </div>
           </Link>
 
@@ -63,7 +72,6 @@ export function SiteLayout() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border glass px-3 py-2 text-sm font-medium hover:bg-secondary/70 transition-colors"
-              aria-label="Discord"
             >
               <MessageCircle className="h-4 w-4 text-accent" /> Discord
             </a>
@@ -119,7 +127,7 @@ export function SiteLayout() {
         )}
       </header>
 
-      <main className="flex-1">
+      <main key={location.pathname} className="flex-1 page-enter">
         <Outlet />
       </main>
 
@@ -128,13 +136,11 @@ export function SiteLayout() {
         <div className="max-w-6xl mx-auto px-4 py-12 grid gap-10 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-primary to-accent grid place-items-center">
-                <Fish className="h-4 w-4 text-primary-foreground" />
-              </div>
+              <img src={logo} alt="FischFFA" width={36} height={36} className="h-9 w-9 object-contain logo-glow" />
               <span className="font-display text-base font-extrabold text-gradient">FischFFA</span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-              Der Allrounder-Realm auf Cytooxien – PvP, Bridging, OnlyUp und mehr. Auf Deutsch, für die Community.
+              Ein Allrounder Minecraft Realm. Viele Modi. Viel Spaß. Trainiere deine Skills.
             </p>
           </div>
           <div>
@@ -154,16 +160,14 @@ export function SiteLayout() {
             <p className="mt-3 text-sm text-muted-foreground">
               Server-IP: <span className="font-mono text-foreground">cytooxien.de</span>
             </p>
-            <div className="mt-4 flex gap-2 flex-wrap">
-              <a
-                href={DISCORD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-xs hover:bg-secondary transition-colors"
-              >
-                <MessageCircle className="h-3.5 w-3.5 text-accent" /> Discord beitreten
-              </a>
-            </div>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-xs hover:bg-secondary transition-colors"
+            >
+              <MessageCircle className="h-3.5 w-3.5 text-accent" /> Discord beitreten
+            </a>
           </div>
         </div>
         <div className="border-t border-border">

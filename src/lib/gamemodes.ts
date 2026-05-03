@@ -9,6 +9,14 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import knockbackImg from "@/assets/modes/knockbackffa.jpg";
+import joinffaImg from "@/assets/modes/joinffa.jpg";
+import speedbridgeImg from "@/assets/modes/speedbridge.jpg";
+import speedrunImg from "@/assets/modes/speedrun.jpg";
+import tnttagImg from "@/assets/modes/tnttag.jpg";
+import onlyupImg from "@/assets/modes/onlyup.jpg";
+import lobbyImg from "@/assets/modes/lobby.jpg";
+
 export type Gamemode = {
   slug: string;
   name: string;
@@ -16,6 +24,7 @@ export type Gamemode = {
   description: string;
   icon: LucideIcon;
   accent: "primary" | "accent" | "emerald";
+  image: string;
   highlights?: string[];
 };
 
@@ -23,72 +32,73 @@ export const gamemodes: Gamemode[] = [
   {
     slug: "knockbackffa",
     name: "KnockbackFFA",
-    short: "Eine Map, ein Kit, pure Action.",
+    short: "Schubs sie alle runter.",
     description:
-      "Eine einzige Map – schwebend hoch oben im Himmel – und ein Kit für alle. Kein Klassen-Wirrwarr, keine Map-Auswahl: einfach rein, schubsen, gewinnen. Wer zuerst fällt, fängt von vorne an.",
+      "Verschiedene Maps im Himmel, ein Kit mit Special Items und Events mitten im Kampf. Ziel: alle anderen runterschubsen.",
     icon: Swords,
     accent: "primary",
-    highlights: ["1 Map im Himmel", "1 Kit für alle", "Reines Skill-PvP"],
+    image: knockbackImg,
+    highlights: ["Maps im Himmel", "Special Kit", "Live Events"],
   },
   {
     slug: "joinffa",
     name: "JoinFFA",
-    short: "Klassisches FFA mit Style.",
-    description:
-      "Wähl dein Kit, geh rein und kämpf gegen alle. Pures PvP, bei dem nur dein Skill zählt – kein Schnickschnack.",
+    short: "Kit wählen, kämpfen, gewinnen.",
+    description: "Klassisches FFA mit verschiedenen Kits. Pures PvP, nur dein Skill zählt.",
     icon: Crosshair,
     accent: "accent",
+    image: joinffaImg,
     highlights: ["Mehrere Kits", "PvP pur", "Skill-basiert"],
   },
   {
     slug: "speedbridge",
     name: "Speedbridge",
     short: "Werde der schnellste Bridger.",
-    description:
-      "Trainiere dein Bridging und jag deine Bestzeit. Perfekt zum Aufwärmen oder um dich richtig zu verbessern.",
+    description: "Trainiere dein Bridging und jag deine Bestzeit.",
     icon: Zap,
     accent: "emerald",
+    image: speedbridgeImg,
     highlights: ["Bridge-Training", "Bestzeiten", "Präzision"],
   },
   {
     slug: "speedrun",
     name: "Speedrun",
-    short: "Movement & volle Geschwindigkeit.",
-    description:
-      "Die Erweiterung zu Speedbridge: hier zählt jede Bewegung. Optimiere deinen Lauf und werde wirklich schnell.",
+    short: "Fokus auf Movement & Speed.",
+    description: "Optimiere deinen Lauf, jeden Sprung, jede Bewegung – und werde wirklich schnell.",
     icon: Wind,
     accent: "accent",
-    highlights: ["Movement", "Parkour", "Erweiterung zu Speedbridge"],
+    image: speedrunImg,
+    highlights: ["Movement", "Parkour", "Bestzeiten"],
   },
   {
     slug: "tnt-tag",
     name: "TNT Tag",
-    short: "Heiße Kartoffel, nur mit TNT.",
-    description:
-      "Einer hat das TNT – und das tickt. Gib es schnell weiter, sonst macht es Bumm. Spaß für die ganze Runde.",
+    short: "Heiße Kartoffel mit TNT.",
+    description: "Gib das tickende TNT weiter, bevor es bei dir explodiert.",
     icon: Bomb,
     accent: "primary",
+    image: tnttagImg,
     highlights: ["Party-Modus", "Schnelle Runden", "Spaß garantiert"],
   },
   {
     slug: "onlyup",
     name: "OnlyUp",
     short: "Klettere bis ganz nach oben.",
-    description:
-      "Das größte OnlyUp auf den Cytooxien Realms. Streamer sind regelmäßig dabei und ein 100€-Event ist geplant.",
+    description: "Das größte OnlyUp auf den Realms. Geplantes 100€-Event und Streamer regelmäßig dabei.",
     icon: ArrowUp,
     accent: "emerald",
+    image: onlyupImg,
     highlights: ["100€ Event geplant", "Streamer dabei", "Größtes OnlyUp"],
   },
   {
     slug: "lobby-spiele",
     name: "Lobby Spiele",
-    short: "Kleine Spiele zum Warmwerden.",
-    description:
-      "Combo Trainer, TicTacToe gegen die KI und mehr – direkt aus der Lobby für zwischendurch oder zum Aufwärmen.",
+    short: "Kleine Spiele für zwischendurch.",
+    description: "Combo Trainer, TicTacToe gegen die KI und mehr Fun-Modes direkt aus der Lobby.",
     icon: Gamepad2,
     accent: "accent",
-    highlights: ["Combo Trainer", "TicTacToe vs KI", "Mehr Fun-Games"],
+    image: lobbyImg,
+    highlights: ["Combo Trainer", "TicTacToe vs KI", "Fun Games"],
   },
 ];
 
