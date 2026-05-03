@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Monitor, Server, Compass, Fish, Play, Copy, Check, ArrowRight, HelpCircle } from "lucide-react";
+import { Monitor, Server, Compass, Fish, Play, Copy, Check, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { TiltCard } from "@/components/TiltCard";
 
@@ -48,24 +48,6 @@ const steps = [
   },
 ];
 
-const faq = [
-  {
-    q: "Brauche ich eine bestimmte Minecraft-Version?",
-    a: "Nein, Cytooxien unterstützt aktuelle Versionen. Wenn was nicht klappt, probier einfach 1.20 oder höher.",
-  },
-  {
-    q: "Kostet das was?",
-    a: "Nein. Du brauchst nur Minecraft Java Edition. FischFFA selbst ist komplett kostenlos.",
-  },
-  {
-    q: "Geht das auch mit Bedrock / Handy?",
-    a: "Cytooxien ist primär ein Java-Server. Über GeyserMC kann es klappen, garantiert ist es aber nicht.",
-  },
-  {
-    q: "Mit Freunden zusammen spielen?",
-    a: "Klar. Joint einfach beide cytooxien.de und trefft euch im FischFFA-Realm – dort könnt ihr in Modi zusammen reingehen.",
-  },
-];
 
 function JoinPage() {
   return (
@@ -121,32 +103,6 @@ function JoinPage() {
             </li>
           ))}
         </ol>
-
-        {/* FAQ */}
-        <div className="mt-20">
-          <div className="text-center max-w-xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.3em] text-accent">FAQ</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold">Häufige Fragen</h2>
-          </div>
-
-          <div className="mt-10 grid md:grid-cols-2 gap-4">
-            {faq.map((item) => (
-              <details
-                key={item.q}
-                className="group glass rounded-xl border border-border p-5 cursor-pointer"
-              >
-                <summary className="list-none flex items-start justify-between gap-3">
-                  <span className="flex items-start gap-3 text-sm font-semibold">
-                    <HelpCircle className="h-4 w-4 mt-0.5 text-accent flex-shrink-0" />
-                    {item.q}
-                  </span>
-                  <span className="text-muted-foreground group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <p className="mt-3 pl-7 text-sm text-muted-foreground leading-relaxed">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
 
         <div className="mt-16 relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/15 via-accent/10 to-emerald/15 p-10 text-center">
           <h3 className="font-display text-2xl sm:text-3xl font-extrabold">Wir sehen uns ingame!</h3>
