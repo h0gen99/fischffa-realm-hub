@@ -118,9 +118,9 @@
   .shadow-soft { box-shadow: var(--shadow-soft); }
 
   .glass {
-    background: color-mix(in oklab, var(--card) 55%, transparent);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in oklab, var(--card) 75%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .card-hover {
