@@ -1,69 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Sparkles,
-  Users,
-  Zap,
-  Shield,
-  Trophy,
-  Heart,
-  Gamepad2,
-  Flame,
-  MessageCircle,
-} from "lucide-react";
+import { ArrowRight, MessageCircle, Gamepad2, Sparkles } from "lucide-react";
 import { gamemodes } from "@/lib/gamemodes";
 import { GamemodeCard } from "@/components/GamemodeCard";
-import heroImg from "@/assets/hero.jpg";
+import logo from "@/assets/logo.png";
 
-const DISCORD_URL = "https://discord.gg/y32bEyVE";
+const DISCORD_URL = "https://discord.gg/9sRnGnaW";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FischFFA – Der Minecraft Allrounder Realm auf Cytooxien" },
+      { title: "FischFFA – Ein Allrounder Minecraft Realm" },
       {
         name: "description",
-        content:
-          "KnockbackFFA, JoinFFA, Speedbridge, TNT Tag, OnlyUp und mehr – alles auf einem Realm. Komm vorbei und spiel mit der Community.",
+        content: "Viele Modi. Viel Spaß. Trainiere deine Skills auf FischFFA.",
       },
-      { property: "og:title", content: "FischFFA – Minecraft Allrounder Realm" },
-      { property: "og:description", content: "Knockback, FFA, Speedbridge, OnlyUp und mehr." },
-      { property: "og:image", content: heroImg },
-      { property: "twitter:image", content: heroImg },
+      { property: "og:title", content: "FischFFA – Allrounder Minecraft Realm" },
+      { property: "og:description", content: "KnockbackFFA, JoinFFA, OnlyUp und mehr." },
+      { property: "og:image", content: logo },
     ],
   }),
   component: Home,
 });
-
-const features = [
-  {
-    icon: Flame,
-    title: "Sieben Modi, ein Realm",
-    text: "Von hartem PvP bis zu entspannten Minispielen – wechsel den Modus, wann immer dir danach ist.",
-  },
-  {
-    icon: Shield,
-    title: "Faires Spiel",
-    text: "Klare Regeln, kein Pay-to-Win. Hier zählt, wie gut du wirklich bist.",
-  },
-  {
-    icon: Heart,
-    title: "Freundliche Community",
-    text: "Egal ob Anfänger oder Profi – bei uns bist du willkommen und findest schnell Anschluss.",
-  },
-  {
-    icon: Trophy,
-    title: "Echte Events",
-    text: "Regelmäßige Aktionen wie unser 100€ OnlyUp-Event. Spielen, gewinnen, Spaß haben.",
-  },
-];
-
-const stats = [
-  { value: "7+", label: "Gamemodes" },
-  { value: "100€", label: "Event-Pott" },
-  { value: "24/7", label: "Online" },
-  { value: "DE", label: "Auf Deutsch" },
-];
 
 function Home() {
   return (
@@ -71,38 +28,42 @@ function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img
-            src={heroImg}
-            alt="Minecraft Landschaft mit Aurora und schwebenden Inseln"
-            width={1920}
-            height={1080}
-            className="h-full w-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-          <div className="absolute inset-0 grid-pattern" />
+          <div className="absolute inset-0 grid-pattern opacity-60" />
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-primary/15 blur-[140px]" />
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 pt-24 pb-28 sm:pt-32 sm:pb-36 text-center">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-border text-xs text-muted-foreground animate-fade-in-up">
+        <div className="relative max-w-6xl mx-auto px-4 pt-20 pb-28 sm:pt-28 sm:pb-36 flex flex-col items-center text-center">
+          {/* Floating logo */}
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-accent/30 blur-3xl scale-110 animate-pulse-slow" />
+            <img
+              src={logo}
+              alt="FischFFA"
+              width={280}
+              height={280}
+              className="relative h-44 w-44 sm:h-64 sm:w-64 object-contain logo-glow float-logo"
+            />
+          </div>
+
+          <span className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-border text-xs text-muted-foreground animate-fade-in-up">
             <span className="relative flex h-2 w-2">
               <span className="animate-pulse-slow absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald" />
             </span>
-            Live auf Cytooxien · Realm aktiv
+            Live auf den Cytooxien Realms
           </span>
 
-          <h1 className="mt-6 font-display font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight animate-fade-in-up delay-100">
+          <h1 className="mt-5 font-display font-black text-6xl sm:text-8xl lg:text-9xl tracking-tight animate-fade-in-up delay-100">
             <span className="text-gradient">FischFFA</span>
           </h1>
-          <p className="mt-5 text-xl sm:text-2xl font-semibold text-foreground/90 max-w-2xl mx-auto animate-fade-in-up delay-200">
-            Der Minecraft-Realm, der einfach alles kann.
+          <p className="mt-4 text-lg sm:text-2xl font-semibold text-foreground/90 max-w-xl animate-fade-in-up delay-200">
+            Ein Allrounder Minecraft Realm.
           </p>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-300">
-            KnockbackFFA, JoinFFA, Speedbridge, TNT Tag, OnlyUp und Lobby-Spiele –
-            alles auf einem Realm. Komm rein, schnapp dir ein Kit und leg los.
+          <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-md animate-fade-in-up delay-300">
+            Viele Modi. Viel Spaß. Trainiere deine Skills.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-in-up delay-400">
+          <div className="mt-10 flex flex-col sm:flex-row items-center gap-3 animate-fade-in-up delay-400">
             <Link
               to="/beitreten"
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold"
@@ -117,78 +78,26 @@ function Home() {
             >
               <MessageCircle className="h-4 w-4" /> Discord beitreten
             </a>
-            <Link
-              to="/gamemodes"
-              className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
-            >
-              <Gamepad2 className="h-4 w-4" /> Modi entdecken
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`glass rounded-2xl border border-border p-5 animate-fade-in-up delay-${(i + 1) * 100}`}
-              >
-                <p className="font-display text-3xl font-extrabold text-gradient">{s.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                  {s.label}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* fade transition */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
-      {/* FEATURES */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent">Warum FischFFA</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold">
-            Ein Realm, der <span className="text-gradient">richtig Spaß macht</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Wir bauen FischFFA für Leute, die Minecraft lieben – ohne komplizierten Kram, ohne Bezahlmauern.
-          </p>
-        </div>
-
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((f, i) => (
-            <div
-              key={f.title}
-              className={`card-hover glass rounded-2xl border border-border p-6 animate-fade-in-up delay-${(i + 1) * 100}`}
-            >
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary/30 via-accent/30 to-emerald/30 grid place-items-center">
-                <f.icon className="h-6 w-6 text-accent" />
-              </div>
-              <h3 className="mt-4 text-lg font-bold">{f.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* MODES PREVIEW */}
-      <section className="max-w-6xl mx-auto px-4 pb-24">
+      <section className="max-w-6xl mx-auto px-4 py-20">
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Gamemodes</p>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold">Was du spielen kannst</h2>
-            <p className="mt-2 text-muted-foreground text-sm max-w-md">
-              Eine kleine Vorschau – die ganze Liste findest du auf der Gamemodes-Seite.
-            </p>
+            <h2 className="mt-2 font-display text-3xl sm:text-5xl font-extrabold">
+              Was du <span className="text-gradient">spielen</span> kannst
+            </h2>
           </div>
           <Link
             to="/gamemodes"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all"
           >
-            Alle Modi ansehen
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            Alle Modi <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -198,76 +107,34 @@ function Home() {
         </div>
       </section>
 
-      {/* DISCORD COMMUNITY */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-14">
-          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
-          <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
-          <div className="relative grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-accent">Community</p>
-              <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold">
-                Triff uns auf <span className="text-gradient">Discord</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">
-                News, Events, Updates und Leute zum Zocken – alles auf einem Fleck.
-                Komm in den Discord, sag Hi und sei direkt dabei, wenn das nächste
-                100€-OnlyUp-Event startet.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href={DISCORD_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold"
-                >
-                  <MessageCircle className="h-4 w-4" /> Zum Discord
-                </a>
-                <Link
-                  to="/gamemodes"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border glass px-6 py-3 font-semibold hover:bg-secondary/70 transition-colors"
-                >
-                  <Gamepad2 className="h-4 w-4" /> Modi ansehen
-                </Link>
-              </div>
-            </div>
-            <div className="hidden md:flex justify-center">
-              <div className="relative h-48 w-48 rounded-3xl bg-gradient-to-br from-primary via-accent to-emerald grid place-items-center shadow-glow animate-float">
-                <MessageCircle className="h-20 w-20 text-primary-foreground" strokeWidth={1.5} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-4 pb-24">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/15 via-accent/10 to-emerald/15 p-10 sm:p-16 text-center">
-          <div className="absolute inset-0 grid-pattern" />
-          <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
-
+        <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-16 text-center">
+          <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-accent/25 blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
           <div className="relative">
             <Sparkles className="h-8 w-8 text-accent mx-auto" />
             <h2 className="mt-4 font-display text-3xl sm:text-5xl font-extrabold">
               Bereit, einzusteigen?
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              Server-IP: <span className="font-mono text-foreground">cytooxien.de</span> – Realm wählen, FischFFA, fertig.
+            <p className="mt-4 text-muted-foreground">
+              Server-IP: <span className="font-mono text-foreground">cytooxien.de</span>
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 to="/beitreten"
                 className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold"
               >
-                <Zap className="h-4 w-4" /> So trittst du bei
+                <Gamepad2 className="h-4 w-4" /> So trittst du bei
               </Link>
-              <Link
-                to="/ueber-uns"
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
               >
-                <Users className="h-4 w-4" /> Mehr über uns
-              </Link>
+                <MessageCircle className="h-4 w-4" /> Discord beitreten
+              </a>
             </div>
           </div>
         </div>
