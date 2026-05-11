@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle, Gamepad2, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Gamepad2, Sparkles, Trophy, Users, Zap } from "lucide-react";
 import { gamemodes } from "@/lib/gamemodes";
 import { GamemodeCard } from "@/components/GamemodeCard";
+import { Reveal } from "@/components/Reveal";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import logo from "@/assets/logo.png";
 
 const DISCORD_URL = "https://discord.gg/9sRnGnaW";
@@ -22,6 +24,13 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const stats = [
+  { icon: Gamepad2, label: "Gamemodes", value: `${gamemodes.length}+` },
+  { icon: Trophy, label: "Geplantes Event", value: "100€" },
+  { icon: Users, label: "Community", value: "Discord" },
+  { icon: Zap, label: "Realm", value: "24/7" },
+];
+
 function Home() {
   return (
     <>
@@ -33,8 +42,9 @@ function Home() {
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4 pt-20 pb-28 sm:pt-28 sm:pb-36 flex flex-col items-center text-center">
-          {/* Floating logo */}
+          {/* Floating logo with conic ring */}
           <div className="relative">
+            <div className="conic-ring" />
             <div className="absolute inset-0 rounded-full bg-accent/30 blur-3xl scale-110 animate-pulse-slow" />
             <img
               src={logo}
@@ -79,65 +89,99 @@ function Home() {
               <MessageCircle className="h-4 w-4" /> Discord beitreten
             </a>
           </div>
+
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl">
+            {stats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 80}>
+                <div className="ring-aurora group relative rounded-2xl border border-border glass p-4 text-center card-hover">
+                  <s.icon className="mx-auto h-5 w-5 text-accent" />
+                  <div className="mt-2 font-display text-2xl font-extrabold text-gradient">{s.value}</div>
+                  <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{s.label}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
+      {/* MARQUEE */}
+      <LogoMarquee />
+
       {/* MODES PREVIEW */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-accent">Gamemodes</p>
-            <h2 className="mt-2 font-display text-3xl sm:text-5xl font-extrabold">
-              Was du <span className="text-gradient">spielen</span> kannst
-            </h2>
+      <section className="max-w-6xl mx-auto px-4 py-24">
+        <Reveal>
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-accent">Gamemodes</p>
+              <h2 className="mt-2 font-display text-3xl sm:text-5xl font-extrabold">
+                Was du <span className="text-gradient">spielen</span> kannst
+              </h2>
+            </div>
+            <Link
+              to="/gamemodes"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all"
+            >
+              Alle Modi <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <Link
-            to="/gamemodes"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all"
-          >
-            Alle Modi <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+        </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {gamemodes.slice(0, 6).map((m) => (
-            <GamemodeCard key={m.slug} mode={m} />
+          {gamemodes.slice(0, 6).map((m, i) => (
+            <Reveal key={m.slug} delay={i * 70}>
+              <GamemodeCard mode={m} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-4 pb-24">
-        <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-16 text-center">
-          <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-accent/25 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
-          <div className="relative">
-            <Sparkles className="h-8 w-8 text-accent mx-auto" />
-            <h2 className="mt-4 font-display text-3xl sm:text-5xl font-extrabold">
-              Bereit, einzusteigen?
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Server-IP: <span className="font-mono text-foreground">cytooxien.de</span>
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                to="/beitreten"
-                className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold"
-              >
-                <Gamepad2 className="h-4 w-4" /> So trittst du bei
-              </Link>
-              <a
-                href={DISCORD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
-              >
-                <MessageCircle className="h-4 w-4" /> Discord beitreten
-              </a>
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-16 text-center">
+            <img
+              src={logo}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute -right-12 -bottom-12 h-72 w-72 object-contain opacity-10 select-none"
+            />
+            <img
+              src={logo}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute -left-16 -top-16 h-60 w-60 object-contain opacity-[0.07] select-none rotate-12"
+            />
+            <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-accent/25 blur-3xl" />
+            <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
+            <div className="relative">
+              <Sparkles className="h-8 w-8 text-accent mx-auto" />
+              <h2 className="mt-4 font-display text-3xl sm:text-5xl font-extrabold">
+                Bereit, einzusteigen?
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Server-IP: <span className="font-mono text-foreground">cytooxien.de</span>
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  to="/beitreten"
+                  className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold"
+                >
+                  <Gamepad2 className="h-4 w-4" /> So trittst du bei
+                </Link>
+                <a
+                  href={DISCORD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border glass px-7 py-3.5 font-semibold hover:bg-secondary/70 transition-colors"
+                >
+                  <MessageCircle className="h-4 w-4" /> Discord beitreten
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

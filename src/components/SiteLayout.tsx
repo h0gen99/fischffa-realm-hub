@@ -19,7 +19,13 @@ export function SiteLayout() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+      document.documentElement.style.setProperty("--scroll", `${pct}%`);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,6 +33,7 @@ export function SiteLayout() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
+      <div className="scroll-progress" aria-hidden />
       <AmbientBackground />
 
       <header
@@ -57,9 +64,9 @@ export function SiteLayout() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.exact }}
-                activeProps={{ className: "text-foreground bg-secondary" }}
-                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-secondary/70"
+                activeProps={{ className: "nav-link is-active text-foreground" }}
+                inactiveProps={{ className: "nav-link text-muted-foreground hover:text-foreground" }}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 {item.label}
               </Link>
