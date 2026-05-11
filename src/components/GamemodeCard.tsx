@@ -31,6 +31,12 @@ export function GamemodeCard({ mode }: { mode: Gamemode }) {
         </div>
 
         <div className="relative p-6">
+          <img
+            src={logo}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute right-4 bottom-4 h-16 w-16 object-contain opacity-[0.06] select-none transition-opacity duration-500 group-hover:opacity-20"
+          />
           <h3 className="text-xl font-bold tracking-tight">{mode.name}</h3>
           <p className="mt-1 text-sm text-accent/90 font-medium">{mode.short}</p>
           <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{mode.description}</p>
