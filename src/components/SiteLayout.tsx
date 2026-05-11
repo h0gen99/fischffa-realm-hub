@@ -64,9 +64,9 @@ export function SiteLayout() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.exact }}
-                activeProps={{ className: "text-foreground bg-secondary" }}
-                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-secondary/70"
+                activeProps={{ className: "nav-link is-active text-foreground" }}
+                inactiveProps={{ className: "nav-link text-muted-foreground hover:text-foreground" }}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 {item.label}
               </Link>
