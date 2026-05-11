@@ -33,6 +33,7 @@ export function SiteLayout() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
+      <div className="scroll-progress" aria-hidden />
       <AmbientBackground />
 
       <header
