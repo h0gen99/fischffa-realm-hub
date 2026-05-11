@@ -1,6 +1,7 @@
 import { accentClasses, type Gamemode } from "@/lib/gamemodes";
 import { ArrowUpRight } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
+import logo from "@/assets/logo.png";
 
 export function GamemodeCard({ mode }: { mode: Gamemode }) {
   const Icon = mode.icon;
