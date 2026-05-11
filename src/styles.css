@@ -247,6 +247,101 @@
   filter: drop-shadow(0 0 28px color-mix(in oklab, var(--accent) 45%, transparent));
 }
 
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee { animation: marquee 38s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+
+/* Conic rotating ring around hero logo */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.conic-ring {
+  position: absolute;
+  inset: -14%;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in oklab, var(--primary) 70%, transparent) 90deg,
+    transparent 180deg,
+    color-mix(in oklab, var(--accent) 70%, transparent) 270deg,
+    transparent 360deg
+  );
+  filter: blur(8px);
+  opacity: .55;
+  animation: spin-slow 14s linear infinite;
+  pointer-events: none;
+  -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%, #000 70%, transparent 72%);
+          mask: radial-gradient(circle, transparent 52%, #000 54%, #000 70%, transparent 72%);
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: var(--scroll, 0%);
+  background: var(--gradient-aurora);
+  z-index: 60;
+  box-shadow: 0 0 12px color-mix(in oklab, var(--accent) 55%, transparent);
+  transition: width .08s linear;
+}
+
+/* Underline nav link */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 14px; right: 14px; bottom: 4px;
+  height: 2px; border-radius: 2px;
+  background: var(--gradient-aurora);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.nav-link:hover::after,
+.nav-link.is-active::after { transform: scaleX(1); }
+
+/* Button shine sweep */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-20deg);
+  transition: left .8s ease;
+}
+.btn-primary:hover::before { left: 130%; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--accent));
+  border-radius: 8px;
+  border: 2px solid var(--background);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .001ms !important;
