@@ -263,8 +263,14 @@
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-50%, 0, 0); }
 }
-.marquee { animation: marquee 38s linear infinite; }
-.marquee:hover { animation-play-state: paused; }
+.marquee {
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: marquee 38s linear infinite !important; }
+}
 
 /* Conic rotating ring around hero logo */
 @keyframes spin-slow {
