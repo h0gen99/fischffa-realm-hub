@@ -190,25 +190,24 @@
   50% { opacity: 1; }
 }
 
-/* Ambient drifting orbs (lightweight) */
+/* Ambient drifting orbs (lightweight, no CSS blur — softness baked into gradient) */
 .orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(60px);
-  opacity: .45;
+  opacity: .55;
   will-change: transform;
   transform: translateZ(0);
 }
 .orb-1 {
-  width: 460px; height: 460px;
-  background: radial-gradient(circle, oklch(0.74 0.17 220 / .5), transparent 70%);
-  top: -120px; left: -120px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, oklch(0.74 0.17 220 / .35), transparent 65%);
+  top: -160px; left: -160px;
   animation: drift1 28s ease-in-out infinite;
 }
 .orb-2 {
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, oklch(0.80 0.16 180 / .4), transparent 70%);
-  bottom: -120px; right: -100px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, oklch(0.80 0.16 180 / .30), transparent 65%);
+  bottom: -160px; right: -140px;
   animation: drift2 32s ease-in-out infinite;
 }
 @keyframes drift1 { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(40px,30px,0)} }
@@ -283,13 +282,27 @@
     color-mix(in oklab, var(--accent) 70%, transparent) 270deg,
     transparent 360deg
   );
-  filter: blur(8px);
-  opacity: .55;
-  animation: spin-slow 14s linear infinite;
+  opacity: .5;
+  animation: spin-slow 18s linear infinite;
   pointer-events: none;
-  -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%, #000 70%, transparent 72%);
-          mask: radial-gradient(circle, transparent 52%, #000 54%, #000 70%, transparent 72%);
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-mask: radial-gradient(circle, transparent 50%, #000 54%, #000 68%, transparent 72%);
+          mask: radial-gradient(circle, transparent 50%, #000 54%, #000 68%, transparent 72%);
 }
+@media (max-width: 768px) {
+  .conic-ring { animation: none; opacity: .35; }
+}
+
+/* Section perf — skip work for offscreen sections */
+.cv-auto { content-visibility: auto; contain-intrinsic-size: 1px 800px; }
+
+/* Sparkle pings (cheap GPU-only transforms) */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(.6); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.sparkle { animation: sparkle 3.5s ease-in-out infinite; will-change: transform, opacity; }
 
 /* Scroll progress bar */
 .scroll-progress {

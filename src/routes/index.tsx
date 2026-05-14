@@ -45,14 +45,20 @@ function Home() {
           {/* Floating logo with conic ring */}
           <div className="relative">
             <div className="conic-ring" />
-            <div className="absolute inset-0 rounded-full bg-accent/30 blur-3xl scale-110 animate-pulse-slow" />
+            <div className="absolute inset-0 rounded-full bg-accent/20 blur-2xl scale-110" />
             <img
               src={logo}
               alt="FischFFA"
               width={280}
               height={280}
+              fetchPriority="high"
+              decoding="async"
               className="relative h-44 w-44 sm:h-64 sm:w-64 object-contain logo-glow float-logo"
             />
+            {/* Cheap sparkles */}
+            <span className="sparkle absolute -top-2 right-6 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_var(--accent)]" />
+            <span className="sparkle absolute bottom-4 -left-2 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_12px_var(--primary)]" style={{ animationDelay: "1.2s" }} />
+            <span className="sparkle absolute top-1/2 -right-3 h-1 w-1 rounded-full bg-emerald shadow-[0_0_10px_var(--emerald)]" style={{ animationDelay: "2.1s" }} />
           </div>
 
           <span className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-border text-xs text-muted-foreground animate-fade-in-up">
@@ -111,7 +117,7 @@ function Home() {
       <LogoMarquee />
 
       {/* MODES PREVIEW */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
+      <section className="cv-auto max-w-6xl mx-auto px-4 py-24">
         <Reveal>
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
             <div>
@@ -138,7 +144,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="max-w-6xl mx-auto px-4 pb-24">
+      <section className="cv-auto max-w-6xl mx-auto px-4 pb-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-border glass p-10 sm:p-16 text-center">
             <img

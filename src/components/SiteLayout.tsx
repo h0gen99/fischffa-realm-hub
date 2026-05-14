@@ -19,14 +19,27 @@ export function SiteLayout() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false;
+    let lastScrolled = false;
+    const update = () => {
+      ticking = false;
       const y = window.scrollY;
-      setScrolled(y > 8);
+      const next = y > 8;
+      if (next !== lastScrolled) {
+        lastScrolled = next;
+        setScrolled(next);
+      }
       const h = document.documentElement.scrollHeight - window.innerHeight;
       const pct = h > 0 ? Math.min(100, (y / h) * 100) : 0;
       document.documentElement.style.setProperty("--scroll", `${pct}%`);
     };
-    onScroll();
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);

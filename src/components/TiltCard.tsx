@@ -10,6 +10,10 @@ export function TiltCard({ children, className = "", intensity = 8 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const frame = useRef<number | null>(null);
   const target = useRef({ x: 0, y: 0 });
+  const enabled = useRef<boolean>(
+    typeof window !== "undefined" &&
+      !window.matchMedia("(hover: none), (pointer: coarse)").matches,
+  );
 
   const apply = () => {
     frame.current = null;
@@ -22,6 +26,7 @@ export function TiltCard({ children, className = "", intensity = 8 }: Props) {
   };
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!enabled.current) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
