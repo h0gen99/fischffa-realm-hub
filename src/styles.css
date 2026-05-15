@@ -39,46 +39,46 @@
 :root {
   --radius: 0.85rem;
 
-  /* Dark theme — Minecraft-inspired blue/green/cyan, premium tones */
-  --background: oklch(0.14 0.025 248);
-  --foreground: oklch(0.97 0.01 240);
+  /* Light theme — clean white with FischFFA blue accents */
+  --background: oklch(0.99 0.003 240);
+  --foreground: oklch(0.18 0.03 250);
 
-  --card: oklch(0.19 0.035 250);
-  --card-foreground: oklch(0.97 0.01 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 250);
 
-  --popover: oklch(0.19 0.035 250);
-  --popover-foreground: oklch(0.97 0.01 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 250);
 
-  --primary: oklch(0.74 0.17 220);
-  --primary-foreground: oklch(0.12 0.03 250);
+  --primary: oklch(0.55 0.20 240);
+  --primary-foreground: oklch(0.99 0.003 240);
 
-  --secondary: oklch(0.25 0.045 250);
-  --secondary-foreground: oklch(0.97 0.01 240);
+  --secondary: oklch(0.96 0.012 240);
+  --secondary-foreground: oklch(0.20 0.03 250);
 
-  --muted: oklch(0.22 0.04 250);
-  --muted-foreground: oklch(0.74 0.035 240);
+  --muted: oklch(0.96 0.012 240);
+  --muted-foreground: oklch(0.46 0.02 245);
 
-  --accent: oklch(0.80 0.16 180);
-  --accent-foreground: oklch(0.12 0.03 250);
+  --accent: oklch(0.62 0.18 225);
+  --accent-foreground: oklch(0.99 0.003 240);
 
-  --emerald: oklch(0.76 0.18 150);
-  --cyan: oklch(0.80 0.16 200);
+  --emerald: oklch(0.60 0.16 165);
+  --cyan: oklch(0.65 0.15 215);
 
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0.01 240);
+  --destructive: oklch(0.60 0.23 25);
+  --destructive-foreground: oklch(0.99 0.003 240);
 
-  --border: oklch(0.32 0.04 245 / 55%);
-  --input: oklch(0.3 0.04 245);
-  --ring: oklch(0.74 0.17 220);
+  --border: oklch(0.88 0.015 240 / 80%);
+  --input: oklch(0.92 0.012 240);
+  --ring: oklch(0.55 0.20 240);
 
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.32 0.13 220 / 0.55), transparent 60%),
-                   linear-gradient(135deg, oklch(0.16 0.04 250), oklch(0.12 0.03 245));
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.55 0.20 240 / 0.18), transparent 60%),
+                   linear-gradient(135deg, oklch(0.99 0.003 240), oklch(0.97 0.012 230));
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
   --gradient-emerald: linear-gradient(135deg, var(--emerald), var(--accent));
-  --gradient-aurora: linear-gradient(120deg, oklch(0.74 0.17 220), oklch(0.80 0.16 180), oklch(0.76 0.18 150));
-  --shadow-glow: 0 0 50px -10px color-mix(in oklab, var(--primary) 65%, transparent);
-  --shadow-card: 0 14px 40px -16px oklch(0 0 0 / 0.65);
-  --shadow-soft: 0 6px 24px -10px oklch(0 0 0 / 0.5);
+  --gradient-aurora: linear-gradient(120deg, oklch(0.55 0.20 240), oklch(0.62 0.18 225), oklch(0.65 0.15 215));
+  --shadow-glow: 0 10px 40px -12px color-mix(in oklab, var(--primary) 35%, transparent);
+  --shadow-card: 0 10px 30px -14px oklch(0.20 0.05 240 / 0.18);
+  --shadow-soft: 0 4px 18px -8px oklch(0.20 0.05 240 / 0.12);
 }
 
 @layer base {
