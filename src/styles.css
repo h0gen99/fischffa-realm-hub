@@ -194,19 +194,19 @@
 .orb {
   position: absolute;
   border-radius: 9999px;
-  opacity: .55;
+  opacity: .35;
   will-change: transform;
   transform: translateZ(0);
 }
 .orb-1 {
   width: 520px; height: 520px;
-  background: radial-gradient(circle, oklch(0.74 0.17 220 / .35), transparent 65%);
+  background: radial-gradient(circle, oklch(0.55 0.20 240 / .18), transparent 65%);
   top: -160px; left: -160px;
   animation: drift1 28s ease-in-out infinite;
 }
 .orb-2 {
   width: 480px; height: 480px;
-  background: radial-gradient(circle, oklch(0.80 0.16 180 / .30), transparent 65%);
+  background: radial-gradient(circle, oklch(0.62 0.18 225 / .15), transparent 65%);
   bottom: -160px; right: -140px;
   animation: drift2 32s ease-in-out infinite;
 }
