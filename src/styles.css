@@ -157,11 +157,8 @@
   }
 
   .grid-pattern {
-    background-image:
-      linear-gradient(var(--foreground) 1px, transparent 1px),
-      linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
-    background-size: 56px 56px;
-    opacity: .045;
+    background-image: none;
+    opacity: 0;
   }
 
   .animate-fade-in-up { animation: fade-in-up .8s cubic-bezier(.2,.7,.2,1) both; }
