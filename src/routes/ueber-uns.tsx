@@ -27,9 +27,11 @@ type Member = {
 const team: Member[] = [
   { name: "Fischiix", role: "Owner", text: "Kümmert sich um alles.", icon: Crown, accent: "primary" },
   { name: "Gritzelbritz", role: "Admin & Developer", text: "Denkt mit und codet.", icon: Code2, accent: "accent" },
+  { name: "ElementIron", role: "Admin", text: "Hält den Laden am Laufen.", icon: Shield, accent: "primary" },
   { name: "Fite_88", role: "Admin & Builder", text: "Baut, denkt und organisiert.", icon: Hammer, accent: "emerald" },
   { name: "Freeeedom", role: "Manager", text: "Organisiert alles.", icon: Settings, accent: "primary" },
   { name: "Babobastisch", role: "Discord Manager", text: "Kümmert sich komplett um Discord.", icon: MessageCircle, accent: "accent" },
+  { name: "voiqz", role: "Community Manager", text: "Da für die Community.", icon: Users, accent: "emerald" },
 ];
 
 const accentBg: Record<Member["accent"], string> = {
