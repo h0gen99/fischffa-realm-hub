@@ -157,8 +157,13 @@
   }
 
   .grid-pattern {
-    background-image: none;
-    opacity: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    opacity: .5;
   }
 
   .animate-fade-in-up { animation: fade-in-up .8s cubic-bezier(.2,.7,.2,1) both; }
