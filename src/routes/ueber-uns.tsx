@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Code2, Hammer, Settings, MessageCircle, ArrowRight, Shield, Users } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
+import { MemberAvatar } from "@/components/MemberAvatar";
+import { Reveal } from "@/components/Reveal";
 import logo from "@/assets/logo.png";
 import type { LucideIcon } from "lucide-react";
 
@@ -64,25 +66,25 @@ function TeamPage() {
           {team.map((m, i) => {
             const Icon = m.icon;
             return (
-              <div key={m.name} className={`animate-fade-in-up delay-${Math.min((i + 1) * 100, 400)}`}>
+              <Reveal key={m.name} delay={i * 70}>
                 <TiltCard className="h-full">
                   <div className="ring-aurora group relative h-full overflow-hidden rounded-2xl border border-border bg-card/80 p-6 shadow-card glass">
                     <div
                       className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br opacity-40 blur-3xl transition-all duration-500 group-hover:opacity-80 ${accentBg[m.accent]}`}
                     />
                     <div className="relative flex items-center gap-4">
-                      <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br shadow-soft ${accentBg[m.accent]}`}>
-                        <Icon className="h-7 w-7" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold tracking-tight">{m.name}</h3>
-                        <p className="text-sm text-accent/90 font-medium">{m.role}</p>
+                      <MemberAvatar name={m.name} accent={m.accent} />
+                      <div className="min-w-0">
+                        <h3 className="text-xl font-bold tracking-tight truncate">{m.name}</h3>
+                        <p className="text-sm text-accent/90 font-medium flex items-center gap-1.5">
+                          <Icon className="h-3.5 w-3.5" /> {m.role}
+                        </p>
                       </div>
                     </div>
                     <p className="relative mt-5 text-sm text-muted-foreground leading-relaxed">{m.text}</p>
                   </div>
                 </TiltCard>
-              </div>
+              </Reveal>
             );
           })}
         </div>
