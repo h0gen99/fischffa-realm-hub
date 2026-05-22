@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crown, Code2, Hammer, Settings, MessageCircle, ArrowRight, Shield, Users } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
+import { MemberAvatar } from "@/components/MemberAvatar";
+import { Reveal } from "@/components/Reveal";
 import logo from "@/assets/logo.png";
 import type { LucideIcon } from "lucide-react";
 
