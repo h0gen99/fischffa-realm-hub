@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as RegelnRouteImport } from './routes/regeln'
+import { Route as LeaderboardsRouteImport } from './routes/leaderboards'
 import { Route as GamemodesRouteImport } from './routes/gamemodes'
 import { Route as BeitretenRouteImport } from './routes/beitreten'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +20,21 @@ import { Route as IndexRouteImport } from './routes/index'
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegelnRoute = RegelnRouteImport.update({
+  id: '/regeln',
+  path: '/regeln',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardsRoute = LeaderboardsRouteImport.update({
+  id: '/leaderboards',
+  path: '/leaderboards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GamemodesRoute = GamemodesRouteImport.update({
@@ -39,12 +57,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/beitreten': typeof BeitretenRoute
   '/gamemodes': typeof GamemodesRoute
+  '/leaderboards': typeof LeaderboardsRoute
+  '/regeln': typeof RegelnRoute
+  '/support': typeof SupportRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/beitreten': typeof BeitretenRoute
   '/gamemodes': typeof GamemodesRoute
+  '/leaderboards': typeof LeaderboardsRoute
+  '/regeln': typeof RegelnRoute
+  '/support': typeof SupportRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesById {
@@ -52,20 +76,48 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/beitreten': typeof BeitretenRoute
   '/gamemodes': typeof GamemodesRoute
+  '/leaderboards': typeof LeaderboardsRoute
+  '/regeln': typeof RegelnRoute
+  '/support': typeof SupportRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
+  fullPaths:
+    | '/'
+    | '/beitreten'
+    | '/gamemodes'
+    | '/leaderboards'
+    | '/regeln'
+    | '/support'
+    | '/ueber-uns'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
-  id: '__root__' | '/' | '/beitreten' | '/gamemodes' | '/ueber-uns'
+  to:
+    | '/'
+    | '/beitreten'
+    | '/gamemodes'
+    | '/leaderboards'
+    | '/regeln'
+    | '/support'
+    | '/ueber-uns'
+  id:
+    | '__root__'
+    | '/'
+    | '/beitreten'
+    | '/gamemodes'
+    | '/leaderboards'
+    | '/regeln'
+    | '/support'
+    | '/ueber-uns'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeitretenRoute: typeof BeitretenRoute
   GamemodesRoute: typeof GamemodesRoute
+  LeaderboardsRoute: typeof LeaderboardsRoute
+  RegelnRoute: typeof RegelnRoute
+  SupportRoute: typeof SupportRoute
   UeberUnsRoute: typeof UeberUnsRoute
 }
 
@@ -76,6 +128,27 @@ declare module '@tanstack/react-router' {
       path: '/ueber-uns'
       fullPath: '/ueber-uns'
       preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/regeln': {
+      id: '/regeln'
+      path: '/regeln'
+      fullPath: '/regeln'
+      preLoaderRoute: typeof RegelnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboards': {
+      id: '/leaderboards'
+      path: '/leaderboards'
+      fullPath: '/leaderboards'
+      preLoaderRoute: typeof LeaderboardsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gamemodes': {
@@ -106,17 +179,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeitretenRoute: BeitretenRoute,
   GamemodesRoute: GamemodesRoute,
+  LeaderboardsRoute: LeaderboardsRoute,
+  RegelnRoute: RegelnRoute,
+  SupportRoute: SupportRoute,
   UeberUnsRoute: UeberUnsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

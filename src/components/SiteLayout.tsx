@@ -6,11 +6,14 @@ import { AmbientBackground } from "@/components/AmbientBackground";
 
 const DISCORD_URL = "https://discord.gg/9sRnGnaW";
 
-const navItems: { to: "/" | "/gamemodes" | "/beitreten" | "/ueber-uns"; label: string; exact?: boolean }[] = [
+const navItems: { to: "/" | "/gamemodes" | "/leaderboards" | "/regeln" | "/support" | "/beitreten" | "/ueber-uns"; label: string; exact?: boolean }[] = [
   { to: "/", label: "Start", exact: true },
   { to: "/gamemodes", label: "Gamemodes" },
-  { to: "/beitreten", label: "Beitreten" },
+  { to: "/leaderboards", label: "Leaderboards" },
+  { to: "/regeln", label: "Regeln" },
+  { to: "/support", label: "Support" },
   { to: "/ueber-uns", label: "Team" },
+  { to: "/beitreten", label: "Beitreten" },
 ];
 
 export function SiteLayout() {
