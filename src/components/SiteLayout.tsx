@@ -59,7 +59,7 @@ export function SiteLayout() {
             : "backdrop-blur-md bg-background/40 border-b border-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-2.5 group">
             <img
               src={logo}
@@ -74,7 +74,7 @@ export function SiteLayout() {
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navItems.map((item) => (
               <Link
                 key={item.to}
@@ -82,14 +82,14 @@ export function SiteLayout() {
                 activeOptions={{ exact: item.exact }}
                 activeProps={{ className: "nav-link is-active text-foreground" }}
                 inactiveProps={{ className: "nav-link text-muted-foreground hover:text-foreground" }}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <a
               href={DISCORD_URL}
               target="_blank"
@@ -107,7 +107,7 @@ export function SiteLayout() {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-secondary"
+            className="lg:hidden p-2 rounded-lg hover:bg-secondary"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menü öffnen"
           >
@@ -116,7 +116,7 @@ export function SiteLayout() {
         </div>
 
         {open && (
-          <nav className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-1 animate-fade-in-up">
+          <nav className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-1 animate-fade-in-up">
             {navItems.map((item) => (
               <Link
                 key={item.to}
