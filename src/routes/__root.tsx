@@ -34,9 +34,15 @@ export const Route = createRootRoute({
         content:
           "FischFFA ist ein Cytooxien Realm mit KnockbackFFA, JoinFFA, Speedbridge, TNT Tag, OnlyUp und Lobby-Minispielen.",
       },
-      { property: "og:title", content: "FischFFA – Minecraft Allrounder Realm" },
-      { property: "og:description", content: "Knockback, FFA, Speedbridge, OnlyUp und mehr." },
+      { property: "og:title", content: "FischFFA – Der ultimative Minecraft Allrounder Realm" },
+      { property: "og:description", content: "FischFFA Realm Hub is a modern, gamer-friendly website for a Minecraft server." },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "FischFFA – Der ultimative Minecraft Allrounder Realm" },
+      { name: "description", content: "FischFFA Realm Hub is a modern, gamer-friendly website for a Minecraft server." },
+      { name: "twitter:description", content: "FischFFA Realm Hub is a modern, gamer-friendly website for a Minecraft server." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b6750416-56db-46d8-8a6c-64d876315b3c/id-preview-ebef8969--db269ffb-7e9d-4265-acfa-4c21d9d91e1d.lovable.app-1779003413836.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b6750416-56db-46d8-8a6c-64d876315b3c/id-preview-ebef8969--db269ffb-7e9d-4265-acfa-4c21d9d91e1d.lovable.app-1779003413836.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
